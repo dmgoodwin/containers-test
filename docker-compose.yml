@@ -1,0 +1,31 @@
+version: '3.8'
+
+# heavily used https://dev.to/ehtesham_ali_abc367f36a5b/dockerize-your-php-and-mysql-application-a-step-by-step-guide-to-multi-container-apps-4g4g as a reference
+services:
+  php-app:
+    build: ./php-app
+    ports:
+      - 8080:80
+    depends_on:
+      - mysql
+
+  mysql:
+    build: ./database
+    ports:
+      - 3306:3306
+    volumes:
+      - mysql-data:/var/lib/mysql
+      #- ./scripts-sql:/docker-entrypoint-initdb.d:ro
+#  mysql:
+#    image: mysql:8.0
+#    ports:
+#      - "3306:3306"
+#    environment:
+#      MYSQL_DATABASE: dev_to
+#      MYSQL_ROOT_PASSWORD: root
+#    volumes:
+#      - mysql-data:/var/lib/mysql
+#      - ./scripts-sql:/docker-entrypoint-initdb.d:ro
+      
+volumes:
+  mysql-data:
