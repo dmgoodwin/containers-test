@@ -15,17 +15,6 @@ services:
       - 3306:3306
     volumes:
       - mysql-data:/var/lib/mysql
-      #- ./scripts-sql:/docker-entrypoint-initdb.d:ro
-#  mysql:
-#    image: mysql:8.0
-#    ports:
-#      - "3306:3306"
-#    environment:
-#      MYSQL_DATABASE: dev_to
-#      MYSQL_ROOT_PASSWORD: root
-#    volumes:
-#      - mysql-data:/var/lib/mysql
-#      - ./scripts-sql:/docker-entrypoint-initdb.d:ro
       
 volumes:
   mysql-data:
